@@ -50,7 +50,7 @@ python demo_release.py -i imgs/temples.jpg --use_gpu
 
 | ECCV 2016 Output | SIGGRAPH 2017 Output |
 |------------------|---------------------|
-| ![ECCV 16 Output]([https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/saved_eccv16.png](https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/forest_eccv16.png)) | ![SIGGRAPH 17 Output](https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/forest_siggraph17.png) |
+| ![ECCV 16 Output](https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/forest_eccv16.png) | ![SIGGRAPH 17 Output](https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/forest_siggraph17.png) |
 
 ---
 
