@@ -50,7 +50,7 @@ python demo_release.py -i imgs/temples.jpg --use_gpu
 
 | ECCV 2016 Output | SIGGRAPH 2017 Output |
 |------------------|---------------------|
-| ![ECCV 16 Output](imgs/temple_eccv16.png) | ![SIGGRAPH 17 Output](imgs/output_siggraph17.png) |
+| ![ECCV 16 Output](https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/saved_eccv16.png) | ![SIGGRAPH 17 Output](https://github.com/Jaya-veera-reddy/Image-colorization-using-DL/blob/master/imgs_out/saved_siggraph17.png) |
 
 ---
 
@@ -121,4 +121,4 @@ Both models are loaded as `eccv16` and `siggraph17` respectively within the `col
 
 ## Contact
 
-For any questions or comments, please contact Richard Zhang at `rich.zhang at eecs.berkeley.edu`.
+For any questions or comments, please contact Richard Zhang at `bingolla9@gmail.com`.
