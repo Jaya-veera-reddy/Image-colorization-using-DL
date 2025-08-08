@@ -1,50 +1,97 @@
-<!--<h3><b>Colorful Image Colorization</b></h3>-->
-## <b>Colorful Image Colorization</b> [[Project Page]](http://richzhang.github.io/colorization/) <br>
-[Richard Zhang](https://richzhang.github.io/), [Phillip Isola](http://web.mit.edu/phillipi/), [Alexei A. Efros](http://www.eecs.berkeley.edu/~efros/). In [ECCV, 2016](http://arxiv.org/pdf/1603.08511.pdf).
+# Colorful Image Colorization
 
-**+ automatic colorization functionality for Real-Time User-Guided Image Colorization with Learned Deep Priors, SIGGRAPH 2017!**
+This repository provides an implementation for image colorization, including automatic colorization functionality based on the research presented in:
 
-**[Sept20 Update]** Since it has been 3-4 years, I converted this repo to support minimal test-time usage in PyTorch. I also added our SIGGRAPH 2017 (it's an interactive method but can also do automatic). See the [Caffe branch](https://github.com/richzhang/colorization/tree/caffe) for the original release.
+- **[Colorful Image Colorization (ECCV 2016)]**
+- **[Real-Time User-Guided Image Colorization with Learned Deep Priors (SIGGRAPH 2017)]**
 
-![Teaser Image](http://richzhang.github.io/colorization/resources/images/teaser4.jpg)
+---
 
-**Clone the repository; install dependencies**
+## Installation
 
+To get started, clone the repository and install the required dependencies:
+
+**requirements.txt contains:**
+- torch
+- skimage
+- numpy
+- matplotlib
+- argparse
+- PIL
+
+---
+
+## Usage
+
+The `demo_release.py` script allows you to colorize an image using the pretrained models.
+
+To colorize an image, run:
+
+```bash
+python demo_release.py -i imgs/temples.jpg
 ```
-git clone https://github.com/richzhang/colorization.git
-pip install requirements.txt
+
+- Replace `imgs/temples.jpg` with your desired image path.
+- To utilize a GPU for faster processing, add the `--use_gpu` flag:
+
+```bash
+python demo_release.py -i imgs/temples.jpg --use_gpu
 ```
 
-**Colorize!** This script will colorize an image. The results should match the images in the `imgs_out` folder.
+- The script saves two output images:  
+  - Colorized using the **ECCV 2016** model  
+  - Colorized using the **SIGGRAPH 2017** model  
+- By default, outputs are saved as `saved_eccv16.png` and `saved_siggraph17.png` in the current directory.
+- Change the save prefix using the `-o` or `--save_prefix` argument.
 
-```
-python demo_release.py -i imgs/ansel_adams3.jpg
-```
+---
 
-**Model loading in Python** The following loads pretrained colorizers. See [demo_release.py](demo_release.py) for some details on how to run the model. There are some pre and post-processing steps: convert to Lab space, resize to 256x256, colorize, and concatenate to the original full resolution, and convert to RGB.
+## Example Outputs
+
+| ECCV 2016 Output | SIGGRAPH 2017 Output |
+|------------------|---------------------|
+| ![ECCV 16 Output](imgs/temple_eccv16.png) | ![SIGGRAPH 17 Output](imgs/output_siggraph17.png) |
+
+---
+
+## Model Loading in Python
+
+You can also load the pretrained colorizers directly in your Python code:
 
 ```python
 import colorizers
-colorizer_eccv16 = colorizers.eccv16().eval()
-colorizer_siggraph17 = colorizers.siggraph17().eval()
+
+colorizer_eccv16 = colorizers.eccv16(pretrained=True).eval()
+colorizer_siggraph17 = colorizers.siggraph17(pretrained=True).eval()
 ```
 
-### Original implementation (Caffe branch)
+The `demo_release.py` script provides further details on the pre and post-processing steps involved:  
+- Converting to Lab color space  
+- Resizing to 256x256  
+- Colorizing  
+- Concatenating with the original full-resolution L channel  
+- Converting back to RGB
 
-The original implementation contained train and testing, our network and AlexNet (for representation learning tests), as well as representation learning tests. It is in Caffe and is no longer supported. Please see the [caffe](https://github.com/richzhang/colorization/tree/caffe) branch for it.
+---
 
-### Citation ###
+## Original Implementation (Caffe branch)
 
-If you find these models useful for your resesarch, please cite with these bibtexs.
+---
 
-```
+## Citation
+
+If you find these models useful for your research, please cite the following papers:
+
+```bibtex
 @inproceedings{zhang2016colorful,
   title={Colorful Image Colorization},
   author={Zhang, Richard and Isola, Phillip and Efros, Alexei A},
   booktitle={ECCV},
   year={2016}
 }
+```
 
+```bibtex
 @article{zhang2017real,
   title={Real-Time User-Guided Image Colorization with Learned Deep Priors},
   author={Zhang, Richard and Zhu, Jun-Yan and Isola, Phillip and Geng, Xinyang and Lin, Angela S and Yu, Tianhe and Efros, Alexei A},
@@ -56,5 +103,22 @@ If you find these models useful for your resesarch, please cite with these bibte
 }
 ```
 
-### Misc ###
-Contact Richard Zhang at rich.zhang at eecs.berkeley.edu for any questions or comments.
+---
+
+## About the Models
+
+This repository leverages two distinct models for image colorization:
+
+- **ECCV 2016 Model (Colorful Image Colorization):**  
+  Focuses on automatic colorization. Learns to produce vibrant and plausible colorizations for grayscale images without human intervention.
+
+- **SIGGRAPH 2017 Model (Real-Time User-Guided Image Colorization with Learned Deep Priors):**  
+  Extends automatic colorization with real-time user-guidance capabilities. While primarily designed for interactive use, it also offers robust automatic colorization.
+
+Both models are loaded as `eccv16` and `siggraph17` respectively within the `colorizers` module and are used in evaluation mode (`.eval()`) for inference.
+
+---
+
+## Contact
+
+For any questions or comments, please contact Richard Zhang at `rich.zhang at eecs.berkeley.edu`.
