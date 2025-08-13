@@ -119,6 +119,3 @@ Both models are loaded as `eccv16` and `siggraph17` respectively within the `col
 
 ---
 
-## Contact
-
-For any questions or comments, please contact Richard Zhang at `bingolla9@gmail.com`.
